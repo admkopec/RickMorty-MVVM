@@ -64,8 +64,8 @@ class CharactersListViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    init() {
-        self.apiService = RickMortyAPIService()
+    init(apiService: RickMortyAPIService = RickMortyAPIServiceImpl()) {
+        self.apiService = apiService
         
         setup()
     }

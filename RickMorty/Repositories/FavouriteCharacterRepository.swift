@@ -8,16 +8,40 @@
 import CoreData
 import Combine
 
-class FavouriteCharacterRepository {
+protocol FavouriteCharacterRepository {
+    /// Fetches all favourite character IDs from CoreData database
+    /// - Throws: Error if fetching from CoreData fails
+    /// - Returns: Array of favourite character IDs
+    func fetchFavouriteCharacterIds() async throws -> [Int]
+    
+    /// Fetches if character with given ID is marked as favourite in CoreData database
+    /// - Parameter characterId: ID of character to check
+    /// - Throws: Error if fetching from CoreData fails
+    /// - Returns: `true` if character is favourite, `false` otherwise
+    func fetchIsFavourite(for characterId: Int) async throws -> Bool
+    
+    /// Adds character with given ID to favourites in CoreData database
+    /// - Parameter characterId: ID of character to add to favourites
+    /// - Throws: Error if saving to CoreData fails
+    func addFavourite(for characterId: Int) async throws
+    
+    /// Removes character with given ID from favourites in CoreData database
+    /// - Parameter characterId: ID of character to remove from favourites
+    /// - Throws: Error if saving to CoreData fails
+    func removeFavourite(for characterId: Int) async throws
+    
+    /// Changes publisher to notify about changes in favourite characters
+    /// - Returns: Publisher that emits changes in favourite characters
+    func favouriteCharactersPublisher() -> AnyPublisher<Notification, Never>
+}
+
+class FavouriteCharacterRepositoryImpl: FavouriteCharacterRepository {
     private let context: NSManagedObjectContext
     
     init(context: NSManagedObjectContext = PersistenceController.shared.container.viewContext) {
         self.context = context
     }
     
-    /// Fetches all favourite character IDs from CoreData database
-    /// - Throws: Error if fetching from CoreData fails
-    /// - Returns: Array of favourite character IDs
     func fetchFavouriteCharacterIds() async throws -> [Int] {
         let request = FavouriteCharacter.fetchRequest()
         
@@ -33,10 +57,6 @@ class FavouriteCharacterRepository {
         }
     }
     
-    /// Fetches if character with given ID is marked as favourite in CoreData database
-    /// - Parameter characterId: ID of character to check
-    /// - Throws: Error if fetching from CoreData fails
-    /// - Returns: `true` if character is favourite, `false` otherwise
     func fetchIsFavourite(for characterId: Int) async throws -> Bool {
         let request = FavouriteCharacter.fetchRequest()
         request.predicate = NSPredicate(format: "characterId == %d", characterId)
@@ -53,9 +73,6 @@ class FavouriteCharacterRepository {
         }
     }
     
-    /// Adds character with given ID to favourites in CoreData database
-    /// - Parameter characterId: ID of character to add to favourites
-    /// - Throws: Error if saving to CoreData fails
     func addFavourite(for characterId: Int) async throws {
         let favouriteCharacter = FavouriteCharacter(context: context)
         favouriteCharacter.characterId = Int32(characterId)
@@ -73,9 +90,6 @@ class FavouriteCharacterRepository {
         }
     }
     
-    /// Removes character with given ID from favourites in CoreData database
-    /// - Parameter characterId: ID of character to remove from favourites
-    /// - Throws: Error if saving to CoreData fails
     func removeFavourite(for characterId: Int) async throws {
         let request = FavouriteCharacter.fetchRequest()
         request.predicate = NSPredicate(format: "characterId == %d", characterId)
@@ -100,8 +114,6 @@ class FavouriteCharacterRepository {
         }
     }
     
-    /// Changes publisher to notify about changes in favourite characters
-    /// - Returns: Publisher that emits changes in favourite characters
     func favouriteCharactersPublisher() -> AnyPublisher<Notification, Never> {
         return NotificationCenter.default.publisher(for: .NSManagedObjectContextObjectsDidChange).eraseToAnyPublisher()
     }

@@ -100,10 +100,12 @@ class CharacterDetailsViewModel: ObservableObject {
     
     // MARK: - Setup
     
-    init(character: Character) {
+    init(character: Character,
+         apiService: RickMortyAPIService = RickMortyAPIServiceImpl(),
+         repository: FavouriteCharacterRepository = FavouriteCharacterRepositoryImpl()) {
         self.character = character
-        self.apiService = RickMortyAPIService()
-        self.repository = FavouriteCharacterRepository()
+        self.apiService = apiService
+        self.repository = repository
         
         displayCharacter(character: character)
     }

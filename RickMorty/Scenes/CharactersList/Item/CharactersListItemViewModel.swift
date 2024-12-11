@@ -52,9 +52,10 @@ class CharactersListItemViewModel: ObservableObject {
         }.store(in: &cancellables)
     }
     
-    init(character: Character) {
+    init(character: Character,
+         repository: FavouriteCharacterRepository = FavouriteCharacterRepositoryImpl()) {
         self.character = character
-        self.repository = FavouriteCharacterRepository()
+        self.repository = repository
         
         setup()
     }

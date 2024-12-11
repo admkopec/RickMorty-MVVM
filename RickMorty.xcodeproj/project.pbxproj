@@ -12,7 +12,6 @@
 		3B3748232D084496005FCFD9 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37481B2D084496005FCFD9 /* Persistence.swift */; };
 		3B3748242D084496005FCFD9 /* RickMorty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B37481C2D084496005FCFD9 /* RickMorty.xcdatamodeld */; };
 		3B3748252D084496005FCFD9 /* RickMortyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37481D2D084496005FCFD9 /* RickMortyApp.swift */; };
-		3B3748282D084499005FCFD9 /* RickMortyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3748262D084499005FCFD9 /* RickMortyTests.swift */; };
 		3B37482C2D08449C005FCFD9 /* RickMortyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3748292D08449C005FCFD9 /* RickMortyUITests.swift */; };
 		3B3748332D08465B005FCFD9 /* RickMortyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3748322D084645005FCFD9 /* RickMortyAPIService.swift */; };
 		3B3748362D0846A9005FCFD9 /* FavouriteCharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3748352D0846A9005FCFD9 /* FavouriteCharacterRepository.swift */; };
@@ -33,6 +32,15 @@
 		3B37485D2D084F99005FCFD9 /* EpisodeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37485C2D084F99005FCFD9 /* EpisodeDetailsView.swift */; };
 		3B3748642D085887005FCFD9 /* CharactersListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3748632D085887005FCFD9 /* CharactersListItemViewModel.swift */; };
 		3B3748662D0858C9005FCFD9 /* EpisodeDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3748652D0858C9005FCFD9 /* EpisodeDetailsViewModel.swift */; };
+		3B37486B2D086939005FCFD9 /* FavouriteCharacterRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37486A2D086924005FCFD9 /* FavouriteCharacterRepositoryTests.swift */; };
+		3B37486E2D08F133005FCFD9 /* RickMortyAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37486D2D08F133005FCFD9 /* RickMortyAPIServiceTests.swift */; };
+		3B3748702D08F1D0005FCFD9 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37486F2D08F1CC005FCFD9 /* MockAPI.swift */; };
+		3B3748732D08FDF1005FCFD9 /* EpisodeDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3748722D08FDF1005FCFD9 /* EpisodeDetailsViewModelTests.swift */; };
+		3B3748762D08FF5A005FCFD9 /* CharacterDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3748752D08FF5A005FCFD9 /* CharacterDetailsViewModelTests.swift */; };
+		3B3748782D090684005FCFD9 /* RickMortyAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3748772D090683005FCFD9 /* RickMortyAPIServiceMock.swift */; };
+		3B37487A2D090710005FCFD9 /* FavouriteCharacterRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3748792D09070E005FCFD9 /* FavouriteCharacterRepositoryMock.swift */; };
+		3B37487D2D0A114D005FCFD9 /* CharactersListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37487C2D0A114D005FCFD9 /* CharactersListViewModelTests.swift */; };
+		3B37487F2D0A115D005FCFD9 /* CharactersListItemViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37487E2D0A115D005FCFD9 /* CharactersListItemViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +69,6 @@
 		3B37481B2D084496005FCFD9 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		3B37481D2D084496005FCFD9 /* RickMortyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickMortyApp.swift; sourceTree = "<group>"; };
 		3B37481F2D084496005FCFD9 /* RickMorty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RickMorty.xcdatamodel; sourceTree = "<group>"; };
-		3B3748262D084499005FCFD9 /* RickMortyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickMortyTests.swift; sourceTree = "<group>"; };
 		3B3748292D08449C005FCFD9 /* RickMortyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickMortyUITests.swift; sourceTree = "<group>"; };
 		3B3748322D084645005FCFD9 /* RickMortyAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickMortyAPIService.swift; sourceTree = "<group>"; };
 		3B3748352D0846A9005FCFD9 /* FavouriteCharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCharacterRepository.swift; sourceTree = "<group>"; };
@@ -82,6 +89,15 @@
 		3B37485C2D084F99005FCFD9 /* EpisodeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsView.swift; sourceTree = "<group>"; };
 		3B3748632D085887005FCFD9 /* CharactersListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListItemViewModel.swift; sourceTree = "<group>"; };
 		3B3748652D0858C9005FCFD9 /* EpisodeDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewModel.swift; sourceTree = "<group>"; };
+		3B37486A2D086924005FCFD9 /* FavouriteCharacterRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCharacterRepositoryTests.swift; sourceTree = "<group>"; };
+		3B37486D2D08F133005FCFD9 /* RickMortyAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickMortyAPIServiceTests.swift; sourceTree = "<group>"; };
+		3B37486F2D08F1CC005FCFD9 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
+		3B3748722D08FDF1005FCFD9 /* EpisodeDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		3B3748752D08FF5A005FCFD9 /* CharacterDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		3B3748772D090683005FCFD9 /* RickMortyAPIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickMortyAPIServiceMock.swift; sourceTree = "<group>"; };
+		3B3748792D09070E005FCFD9 /* FavouriteCharacterRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCharacterRepositoryMock.swift; sourceTree = "<group>"; };
+		3B37487C2D0A114D005FCFD9 /* CharactersListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModelTests.swift; sourceTree = "<group>"; };
+		3B37487E2D0A115D005FCFD9 /* CharactersListItemViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListItemViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +172,10 @@
 		3B3748272D084499005FCFD9 /* RickMortyTests */ = {
 			isa = PBXGroup;
 			children = (
-				3B3748262D084499005FCFD9 /* RickMortyTests.swift */,
+				3B3748692D08690E005FCFD9 /* Scenes */,
+				3B3748682D086901005FCFD9 /* Services */,
+				3B3748672D0868F4005FCFD9 /* Repositories */,
+				3B37486C2D08D348005FCFD9 /* Mocks */,
 			);
 			path = RickMortyTests;
 			sourceTree = "<group>";
@@ -278,6 +297,67 @@
 				3B3748632D085887005FCFD9 /* CharactersListItemViewModel.swift */,
 			);
 			path = Item;
+			sourceTree = "<group>";
+		};
+		3B3748672D0868F4005FCFD9 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				3B37486A2D086924005FCFD9 /* FavouriteCharacterRepositoryTests.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		3B3748682D086901005FCFD9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3B37486D2D08F133005FCFD9 /* RickMortyAPIServiceTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3B3748692D08690E005FCFD9 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3B37487B2D09FA1A005FCFD9 /* CharactersList */,
+				3B3748742D08FF46005FCFD9 /* CharacterDetails */,
+				3B3748712D08FDDE005FCFD9 /* EpisodeDetails */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		3B37486C2D08D348005FCFD9 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				3B37486F2D08F1CC005FCFD9 /* MockAPI.swift */,
+				3B3748772D090683005FCFD9 /* RickMortyAPIServiceMock.swift */,
+				3B3748792D09070E005FCFD9 /* FavouriteCharacterRepositoryMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		3B3748712D08FDDE005FCFD9 /* EpisodeDetails */ = {
+			isa = PBXGroup;
+			children = (
+				3B3748722D08FDF1005FCFD9 /* EpisodeDetailsViewModelTests.swift */,
+			);
+			path = EpisodeDetails;
+			sourceTree = "<group>";
+		};
+		3B3748742D08FF46005FCFD9 /* CharacterDetails */ = {
+			isa = PBXGroup;
+			children = (
+				3B3748752D08FF5A005FCFD9 /* CharacterDetailsViewModelTests.swift */,
+			);
+			path = CharacterDetails;
+			sourceTree = "<group>";
+		};
+		3B37487B2D09FA1A005FCFD9 /* CharactersList */ = {
+			isa = PBXGroup;
+			children = (
+				3B37487C2D0A114D005FCFD9 /* CharactersListViewModelTests.swift */,
+				3B37487E2D0A115D005FCFD9 /* CharactersListItemViewModelTests.swift */,
+			);
+			path = CharactersList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,7 +526,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B3748282D084499005FCFD9 /* RickMortyTests.swift in Sources */,
+				3B37487D2D0A114D005FCFD9 /* CharactersListViewModelTests.swift in Sources */,
+				3B37487F2D0A115D005FCFD9 /* CharactersListItemViewModelTests.swift in Sources */,
+				3B3748762D08FF5A005FCFD9 /* CharacterDetailsViewModelTests.swift in Sources */,
+				3B37486B2D086939005FCFD9 /* FavouriteCharacterRepositoryTests.swift in Sources */,
+				3B3748702D08F1D0005FCFD9 /* MockAPI.swift in Sources */,
+				3B37487A2D090710005FCFD9 /* FavouriteCharacterRepositoryMock.swift in Sources */,
+				3B3748782D090684005FCFD9 /* RickMortyAPIServiceMock.swift in Sources */,
+				3B3748732D08FDF1005FCFD9 /* EpisodeDetailsViewModelTests.swift in Sources */,
+				3B37486E2D08F133005FCFD9 /* RickMortyAPIServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
