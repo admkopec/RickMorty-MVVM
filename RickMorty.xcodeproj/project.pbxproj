@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -446,6 +446,7 @@
 				};
 			};
 			buildConfigurationList = 3B3747E02D084490005FCFD9 /* Build configuration list for PBXProject "RickMorty" */;
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -454,7 +455,6 @@
 			);
 			mainGroup = 3B3747DC2D084490005FCFD9;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 3B3747E62D084490005FCFD9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
