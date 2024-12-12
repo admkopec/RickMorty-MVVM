@@ -15,6 +15,12 @@ protocol RickMortyAPIService {
     /// - Returns: Tuple containing an array of characters and a boolean indicating if there are more pages to fetch
     func fetchCharacters(page: Int?, with searchQuery: String) async throws -> ([Character], moreAvailable: Bool)
     
+    /// Fetches a character from the API
+    /// - Parameter id: The ID of the character to fetch
+    /// - Throws: Error if fetching from the API fails
+    /// - Returns: The fetched character
+    func fetchCharacter(id: Int) async throws -> Character
+    
     /// Fetches an episode from the API
     /// - Parameter id: The ID of the episode to fetch
     /// - Throws: Error if fetching from the API fails
@@ -54,6 +60,23 @@ class RickMortyAPIServiceImpl: RickMortyAPIService {
                 // Still more to fetch
                 return (response.results, true)
             }
+        } catch {
+            if let apiError = try? JSONDecoder().decode(APIErrorResponse.self, from: data) {
+                throw APIError(message: apiError.error)
+            } else {
+                throw error
+            }
+        }
+    }
+    
+    func fetchCharacter(id: Int) async throws -> Character {
+        let url = baseURL.appendingPathComponent("character").appendingPathComponent("\(id)")
+        let request = URLRequest(url: url)
+        
+        let (data, _) = try await session.data(for: request)
+        
+        do {
+            return try JSONDecoder().decode(Character.self, from: data)
         } catch {
             if let apiError = try? JSONDecoder().decode(APIErrorResponse.self, from: data) {
                 throw APIError(message: apiError.error)

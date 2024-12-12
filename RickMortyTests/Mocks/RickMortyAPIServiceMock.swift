@@ -16,6 +16,7 @@ class RickMortyAPIServiceMock: RickMortyAPIService {
     var fetchCharactersCalled = false
     var fetchCharactersCalledWithPage: Int?
     var fetchCharactersCalledWithSearchQuery: String?
+    var fetchCharacterIdCalled = false
     var fetchEpisodeIdCalled = false
     var fetchEpisodeUrlCalled = false
     
@@ -33,6 +34,18 @@ class RickMortyAPIServiceMock: RickMortyAPIService {
             throw error
         }
         return ([Character.preview], moreAvailable)
+    }
+    
+    func fetchCharacter(id: Int) async throws -> Character {
+        fetchCharacterIdCalled = true
+        if let expectation = expect.first {
+            expectation.fulfill()
+            expect.removeFirst()
+        }
+        if let error = error {
+            throw error
+        }
+        return Character.preview
     }
     
     func fetchEpisode(id: Int) async throws -> Episode {
