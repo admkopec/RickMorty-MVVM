@@ -58,6 +58,17 @@ struct CharactersListView: View {
             .searchable(text: $viewModel.searchQuery, prompt: "Search by name")
         }
         .navigationTitle("Characters")
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    viewModel.toggleFavouritesFilter()
+                } label: {
+                    Image(systemName: viewModel.showOnlyFavourites ? "heart.fill" : "heart")
+                        .foregroundStyle(.red)
+                        .accessibilityLabel(viewModel.showOnlyFavourites ? "Show all" : "Show only Favourites")
+                }
+            }
+        }
     }
 }
 

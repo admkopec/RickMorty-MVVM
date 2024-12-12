@@ -39,7 +39,7 @@ final class RickMortyUITests: XCTestCase {
         app.launch()
         
         app.buttons["Get Started"].tap()
-        try await Task.sleep(for: .milliseconds(200))
+        try await Task.sleep(for: .milliseconds(500))
         
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         XCTAssert(app.staticTexts["Characters"].exists)
@@ -54,11 +54,11 @@ final class RickMortyUITests: XCTestCase {
         app.launch()
         
         app.buttons["Get Started"].tap()
-        try await Task.sleep(for: .milliseconds(200))
+        try await Task.sleep(for: .milliseconds(500))
         
         app.searchFields["Search by name"].tap()
         app.searchFields["Search by name"].typeText("Rick")
-        try await Task.sleep(for: .milliseconds(800))
+        try await Task.sleep(for: .milliseconds(1800))
         
         // Verify that the search results are displayed
         XCTAssert(app.buttons["Rick Sanchez"].exists)
@@ -72,11 +72,11 @@ final class RickMortyUITests: XCTestCase {
         app.launch()
         
         app.buttons["Get Started"].tap()
-        try await Task.sleep(for: .milliseconds(200))
+        try await Task.sleep(for: .milliseconds(500))
         
         app.searchFields["Search by name"].tap()
         app.searchFields["Search by name"].typeText("Abcdefghijkl")
-        try await Task.sleep(for: .milliseconds(800))
+        try await Task.sleep(for: .milliseconds(1800))
         
         XCTAssert(app.staticTexts["Could not load data!"].exists)
     }
@@ -88,7 +88,7 @@ final class RickMortyUITests: XCTestCase {
         app.launch()
         
         app.buttons["Get Started"].tap()
-        try await Task.sleep(for: .milliseconds(200))
+        try await Task.sleep(for: .milliseconds(500))
         app.buttons["Rick Sanchez"].tap()
         
         // Verify that the character details are displayed
@@ -117,9 +117,9 @@ final class RickMortyUITests: XCTestCase {
         app.launch()
         
         app.buttons["Get Started"].tap()
-        try await Task.sleep(for: .milliseconds(200))
+        try await Task.sleep(for: .milliseconds(500))
         app.buttons["Rick Sanchez"].tap()
-        try await Task.sleep(for: .milliseconds(200))
+        try await Task.sleep(for: .milliseconds(500))
         app.buttons["Episode S01E01"].tap()
         
         // Verify that the episode details are displayed

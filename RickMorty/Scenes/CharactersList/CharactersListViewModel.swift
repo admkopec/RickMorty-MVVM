@@ -13,6 +13,7 @@ class CharactersListViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     
     private let apiService: RickMortyAPIService
+    private let repository: FavouriteCharacterRepository
     
     // MARK: - State
     
@@ -21,23 +22,30 @@ class CharactersListViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var didReachEnd = false
     @Published var errorMessage: String?
+    @Published var showOnlyFavourites = false
     
     private var currentPage = 0
     
     // MARK: - Actions
     
     func onAppearActions() {
-        fetchNextPage()
+        if showOnlyFavourites {
+            fetchFavouriteCharacters()
+        } else {
+            fetchNextPage()
+        }
     }
     
     func fetchNextPage() {
-        guard !isLoading else { return }
+        guard !isLoading, !showOnlyFavourites else { return }
         isLoading = true
         Task {
             let nextPage = currentPage + 1
             do {
                 let (characters, moreAvailable) = try await apiService.fetchCharacters(page: nextPage, with: searchQuery)
-                self.characters.append(contentsOf: characters)
+                withAnimation {
+                    self.characters.append(contentsOf: characters)
+                }
                 currentPage = nextPage
                 didReachEnd = !moreAvailable
                 errorMessage = nil
@@ -50,6 +58,40 @@ class CharactersListViewModel: ObservableObject {
         }
     }
     
+    func fetchFavouriteCharacters() {
+        isLoading = true
+        Task {
+            do {
+                let favouriteCharacterIds = try await repository.fetchFavouriteCharacterIds()
+                let characters = try await favouriteCharacterIds.asyncMap { id in
+                    try await self.apiService.fetchCharacter(id: id)
+                }.filter({ $0.name.lowercased().contains(searchQuery.lowercased()) || searchQuery.isEmpty })
+                withAnimation {
+                    self.characters = characters
+                }
+                didReachEnd = true
+            } catch let apiError as APIError {
+                errorMessage = apiError.message
+            } catch {
+                errorMessage = error.localizedDescription
+            }
+            isLoading = false
+        }
+    }
+    
+    func toggleFavouritesFilter() {
+        showOnlyFavourites.toggle()
+        if showOnlyFavourites {
+            fetchFavouriteCharacters()
+        } else {
+            currentPage = 0
+            didReachEnd = false
+            characters = []
+            fetchNextPage()
+        }
+    }
+        
+    
     // MARK: - Setup
     
     private func setup() {
@@ -59,13 +101,18 @@ class CharactersListViewModel: ObservableObject {
                 self?.currentPage = 0
                 self?.characters = []
                 self?.didReachEnd = false
-                self?.fetchNextPage()
+                if self?.showOnlyFavourites == true {
+                    self?.fetchFavouriteCharacters()
+                } else {
+                    self?.fetchNextPage()
+                }
             }
             .store(in: &cancellables)
     }
     
-    init(apiService: RickMortyAPIService = RickMortyAPIServiceImpl()) {
+    init(apiService: RickMortyAPIService = RickMortyAPIServiceImpl(), repository: FavouriteCharacterRepository = FavouriteCharacterRepositoryImpl()) {
         self.apiService = apiService
+        self.repository = repository
         
         setup()
     }

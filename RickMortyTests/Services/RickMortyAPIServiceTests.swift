@@ -106,6 +106,46 @@ final class RickMortyAPIServiceTests: XCTestCase {
             XCTAssertEqual((error as! APIError).message, APIError(message: apiError.error).message)
         }
     }
+    
+    func testFetchCharacterById() async throws {
+        // Given
+        let id = 1
+        let character = Character.preview
+        MockAPI.requestHandler = { request in
+            XCTAssert(request.url?.absoluteString.hasSuffix("character/\(id)") == true)
+            
+            let response = HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: ["Content-Type": "application/json"])!
+            return (response, try! JSONEncoder().encode(character))
+        }
+
+        // When
+        let fetchedCharacter = try await sut.fetchCharacter(id: id)
+        
+        // Then
+        XCTAssertEqual(fetchedCharacter, character)
+    }
+    
+    func testFetchCharacterByIdAPIError() async throws {
+        // Given
+        let id = 1
+        let apiError = APIErrorResponse(error: "Not found")
+        MockAPI.requestHandler = { request in
+            XCTAssert(request.url?.absoluteString.hasSuffix("character/\(id)") == true)
+
+            let response = HTTPURLResponse(url: request.url!, statusCode: 404, httpVersion: "HTTP/1.1", headerFields: ["Content-Type": "application/json"])!
+            return (response, try! JSONEncoder().encode(apiError))
+        }
+        
+        // When
+        do {
+            _ = try await sut.fetchCharacter(id: id)
+            XCTFail("Expected error")
+        } catch {
+            // Then
+            XCTAssertTrue(error is APIError)
+            XCTAssertEqual((error as! APIError).message, APIError(message: apiError.error).message)
+        }
+    }
 
     func testFetchEpisodeById() async throws {
         // Given
